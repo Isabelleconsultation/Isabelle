@@ -9,16 +9,25 @@
 </head>
 <body style="font-family: 'Cardo', serif;">
   <header>
-    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1em 2em; background-color: #d0ecff;">
-      <h1 style="margin: 0; font-size: 1.5em;">Jane Doe</h1>
-      <ul style="list-style: none; display: flex; gap: 1.5em; margin: 0; padding: 0;">
-        <li><a href="index.html" style="text-decoration: none; color: #2c3e50; font-weight: bold;">Home</a></li>
-        <li><a href="astro.html" style="text-decoration: none; color: #2c3e50; font-weight: bold;">Astrology</a></li>
-        <li><a href="graph.html" style="text-decoration: none; color: #2c3e50; font-weight: bold;">Graphology</a></li>
-        <li><a href="morph.html" style="text-decoration: none; color: #2c3e50; font-weight: bold;">Morphopsychology</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="responsive-menu">
+  <div class="logo">Jane Doe</div>
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  <ul class="menu">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="astrology.html">Astrology</a></li>
+    <li><a href="graphology.html">Graphology</a></li>
+    <li><a href="morphopsychology.html">Morphopsychology</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="consultation.html">Consultation</a></li>
+  </ul>
+</nav>
+  <div style="text-align: center; padding: 1em 0;">
+    <h1>Jane Doe</h1>
+    <h2>Astrology, Graphology & Morphopsychology Specialist</h2>
+  </div>
+</header>
 
   <main style="padding: 2em; max-width: 800px; margin: 0 auto;">
     <h2 style="font-size: 2em; color: #2c3e50;">Astrology</h2>

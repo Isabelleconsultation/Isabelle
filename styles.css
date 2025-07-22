@@ -197,3 +197,65 @@ header h2 {
 .close:hover {
   color: #333;
 }
+
+/* Responsive Nav Styles */
+.responsive-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background-color: #d0ecff;
+}
+
+.responsive-menu .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.responsive-menu .menu-icon {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
+.responsive-menu .menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+  margin: 0;
+  padding: 0;
+}
+
+.responsive-menu a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .responsive-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .responsive-menu .menu-icon {
+    display: block;
+    margin-left: auto;
+  }
+
+  .responsive-menu .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  #menu-toggle:checked + .menu-icon + .menu {
+    display: flex;
+  }
+}

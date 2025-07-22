@@ -9,9 +9,26 @@
 </head>
 <body style="font-family: 'Cardo', serif;">
   <header>
-    <h1>Jane Doe</h1>
-    <h2>Astrology, Graphology & Morphopsychology Specialist</h2>
+  <nav class="responsive-menu">
+  <div class="logo">Jane Doe</div>
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  <ul class="menu">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="astrology.html">Astrology</a></li>
+    <li><a href="graphology.html">Graphology</a></li>
+    <li><a href="morphopsychology.html">Morphopsychology</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="consultation.html">Consultation</a></li>
+  </ul>
+</nav>
+    <div style="text-align: center; padding: 1em 0;">
+      <h1>Jane Doe</h1>
+      <h2>Astrology, Graphology & Morphopsychology Specialist</h2>
+    </div>
   </header>
+
   <div class="intro">
     <p>Explore the ancient and modern sciences of understanding personality and destiny through symbols, handwriting, and facial features.</p>
   </div>
@@ -58,14 +75,20 @@
       const link = document.getElementById('modal-link');
 
       const images = {
-  Astrology: 'astrology.png',
-  Graphology: 'graphology.png',
-  Morphopsychology: 'morphopsychology.png'
-};
-      
+        Astrology: 'astrology.png',
+        Graphology: 'graphology.png',
+        Morphopsychology: 'morphopsychology.png'
+      };
+
+      const pages = {
+        Astrology: 'astrology.html',
+        Graphology: 'graphology.html',
+        Morphopsychology: 'morphopsychology.html'
+      };
+
       img.src = images[topic];
       title.innerText = topic;
-      link.href = `#${topic.toLowerCase()}`;
+      link.href = pages[topic];
       modal.style.display = 'flex';
     }
 
