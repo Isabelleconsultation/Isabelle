@@ -66,9 +66,19 @@
       <a href="#" id="modal-link" class="more-info-btn">More info</a>
     </div>
   </div>
-
+</body>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>© <span id="year"></span> Jane Doe. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://facebook.com" class="social-link facebook" target="_blank" aria-label="Facebook"></a>
+      <a href="https://instagram.com" class="social-link instagram" target="_blank" aria-label="Instagram"></a>
+      <a href="https://tiktok.com" class="social-link tiktok" target="_blank" aria-label="TikTok"></a>
+    </div>
+  </div>
+</footer>
   <script>
-    function openModal(topic) {
+        function openModal(topic) {
       const modal = document.getElementById('modal');
       const img = document.getElementById('modal-img');
       const title = document.getElementById('modal-title');
@@ -95,6 +105,7 @@
     document.getElementById('close-modal').addEventListener('click', () => {
       document.getElementById('modal').style.display = 'none';
     });
+    // Update footer year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-</body>
 </html>

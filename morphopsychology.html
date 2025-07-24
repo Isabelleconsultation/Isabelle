@@ -45,5 +45,18 @@
   </main>
 
 </body>
-
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>© <span id="year"></span> Jane Doe. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://facebook.com" class="social-link facebook" target="_blank" aria-label="Facebook"></a>
+      <a href="https://instagram.com" class="social-link instagram" target="_blank" aria-label="Instagram"></a>
+      <a href="https://tiktok.com" class="social-link tiktok" target="_blank" aria-label="TikTok"></a>
+    </div>
+  </div>
+</footer>
+  <script>
+    // Update footer year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </html>
