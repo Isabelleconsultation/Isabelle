@@ -10,7 +10,7 @@
 <body>
   <header>
     <nav class="responsive-menu">
-      <div class="logo">Jane Doe</div>
+      <div class="logo">ISABELLE FERREIRA</div>
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu">
@@ -24,19 +24,19 @@
       </ul>
     </nav>
     <div class="hero-header">
-      <h1>Jane Doe</h1>
-      <h2>Astrology, Graphology & Morphopsychology Specialist</h2>
+      <h1>ISABELLE FERREIRA DE SOUSA</h1>
+      <h2>ASTROLOGY GRAPHOLGY MORPHOPSYCHOLOGY</h2>
     </div>
   </header>
 
   <section class="intro">
-    <p>Explore the ancient and modern sciences of understanding personality and destiny through symbols, handwriting, and facial features.</p>
+    <p>Delve into the wisdom of Graphology, Morphopsychology, and Astrology to illuminate the essence of who you are and the direction of your life’s path — embark on a journey of profound self-discovery.</p>
   </section>
 
   <section class="sections">
     <div class="box" onclick="openModal('Astrology')">
       <img src="astrology.png" alt="Astrology">
-      <h3>Astrology</h3>
+      <h3>Holistic Astrology</h3>
     </div>
     <div class="box" onclick="openModal('Graphology')">
       <img src="graphology.png" alt="Graphology">
@@ -49,7 +49,7 @@
   </section>
 
   <section class="about-section">
-    <img src="about.jpg" alt="About Jane">
+    <img src="about.png" alt="About Jane">
     <div class="about-text">
       <h3>About: My Journey and Philosophy</h3>
       <p>From early fascination with the stars to decoding handwriting and the human face, my path has been one of deep discovery and passion.</p>
@@ -62,14 +62,15 @@
       <span class="close" id="close-modal">&times;</span>
       <img id="modal-img" src="" alt="">
       <h3 id="modal-title"></h3>
-      <p id="modal-description">Here is a brief introduction to the topic. You can dive deeper by clicking the button below.</p>
+      <p id="modal-description">My personal approach to Astrology is both holistic and spiritual. Rooted in the principles of holism, this form of astrology embraces—physical, emotional, mental, and spiritual dimensions—and places each individual at the centre of their own evolutionary journey.
+In a world constantly searching for meaning, holistic astrology invites us to turn inward, to reconnect with ourselves through the rhythms of the sky and the cycles of life. Far from offering ready-made answers, it unfolds as a symbolic language illuminating the depths of the soul, beyond stereotypes and simplistic predictions.</p>
       <a href="#" id="modal-link" class="more-info-btn">More info</a>
     </div>
   </div>
 </body>
 <footer class="site-footer">
   <div class="footer-content">
-    <p>© <span id="year"></span> Jane Doe. All rights reserved.</p>
+    <p>© <span id="year"></span> Isabelle Ferreira. All rights reserved.</p>
     <div class="social-links">
       <!-- Facebook -->
       <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook">
@@ -97,35 +98,54 @@
     </div>
   </div>
 </footer>
-  <script>
-        function openModal(topic) {
-      const modal = document.getElementById('modal');
-      const img = document.getElementById('modal-img');
-      const title = document.getElementById('modal-title');
-      const link = document.getElementById('modal-link');
+<script>
+  function openModal(topic) {
+    const modal  = document.getElementById('modal');
+    const img    = document.getElementById('modal-img');
+    const title  = document.getElementById('modal-title');
+    const link   = document.getElementById('modal-link');
+    const desc   = document.getElementById('modal-description');
 
-      const images = {
-        Astrology: 'astrology.png',
-        Graphology: 'graphology.png',
-        Morphopsychology: 'morphopsychology.png'
-      };
+    const images = {
+      Astrology:        'astrology.png',
+      Graphology:       'graphology.png',
+      Morphopsychology: 'morphopsychology.png'
+    };
 
-      const pages = {
-        Astrology: 'astrology.html',
-        Graphology: 'graphology.html',
-        Morphopsychology: 'morphopsychology.html'
-      };
+    const pages = {
+      Astrology:        'astrology.html',
+      Graphology:       'graphology.html',
+      Morphopsychology: 'morphopsychology.html'
+    };
 
-      img.src = images[topic];
-      title.innerText = topic;
-      link.href = pages[topic];
-      modal.style.display = 'flex';
-    }
+    const descriptions = {
+      Astrology: `My personal approach to Astrology is both holistic and spiritual. Rooted in the principles of holism, this form of astrology embraces—physical, emotional, mental, and spiritual dimensions—and places each individual at the centre of their own evolutionary journey.
 
-    document.getElementById('close-modal').addEventListener('click', () => {
-      document.getElementById('modal').style.display = 'none';
-    });
-    // Update footer year automatically
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+In a world constantly searching for meaning, holistic astrology invites us to turn inward, to reconnect with ourselves through the rhythms of the sky and the cycles of life. Far from offering ready-made answers, it unfolds as a symbolic language illuminating the depths of the soul, beyond stereotypes and simplistic predictions.`,
+
+      Graphology: `Graphology reveals personality through handwriting. 
+By studying stroke pressure, rhythm, spacing, and form, I uncover hidden motivations, 
+emotional patterns, and areas for growth that handwriting silently records.`,
+
+      Morphopsychology: `Morphopsychology interprets facial features to understand 
+core temperament and innate talents. Through analysis of bone structure and soft tissue, 
+we gain insight into behavioural tendencies and how you best process the world around you.`
+    };
+
+    img.src        = images[topic];
+    title.textContent = topic;
+    desc.textContent  = descriptions[topic];   // <— set unique text
+    link.href      = pages[topic];
+
+    modal.style.display = 'flex';
+  }
+
+  document.getElementById('close-modal')
+          .addEventListener('click', () =>
+            document.getElementById('modal').style.display = 'none');
+
+  // footer year
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+</script>
 </html>

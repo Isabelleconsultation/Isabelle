@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact – Jane Doe</title>
+  <title>Contact – ISABELLE FERREIRA</title>
   <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <nav class="responsive-menu">
-      <div class="logo">Jane Doe</div>
+      <div class="logo">ISABELLE FERREIRA</div>
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu">
@@ -30,17 +30,22 @@
 
   <main class="contact-section">
     <p class="lead">If you'd like to connect with me, ask a question, or schedule a session, feel free to reach out through the form below:</p>
-    <form action="#" method="post" class="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    <form id="contact-form" class="contact-form">
+      <input type="text"  name="name"    placeholder="Your Name"  required>
+      <input type="email" name="email"   placeholder="Your Email" required>
+      <textarea name="message" rows="6"  placeholder="Your Message" required></textarea>
+
+      <!-- ② hCaptcha widget (public *site-key*) -->
+      <div class="h-captcha" data-sitekey="YOUR_PUBLIC_SITEKEY_HERE"></div>
+
       <button type="submit">Send Message</button>
     </form>
   </main>
 </body>
 <footer class="site-footer">
   <div class="footer-content">
-    <p>© <span id="year"></span> Jane Doe. All rights reserved.</p>
+    <p>© <span id="year"></span> Isabelle Ferreira. All rights reserved.</p>
     <div class="social-links">
       <!-- Facebook -->
       <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook">
@@ -71,5 +76,20 @@
   <script>
     // Update footer year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // contact form
+    document.querySelector('.contact-form').addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const fd = new FormData(e.target);
+    fd.append('guid', '61f4f2be-3e3e-42d0-a3c5-9b9d88d2c123');   // Isabelle’s GUID
+
+    const res = await fetch(
+      'https://contactformemailsend.azurewebsites.net/api/SubmitContactForm?code=<YOUR_FUNCTION_KEY>',
+      { method: 'POST', body: fd });
+
+    alert(res.ok ? 'Thanks – message sent!' : 'Error — please try again.');
+    if (res.ok) e.target.reset();
+});
   </script>
 </html>
