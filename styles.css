@@ -77,8 +77,22 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 /* ------------------------------------------------------------------
    About Strip
    ------------------------------------------------------------------*/
-.about-section{display:flex;flex-wrap:wrap;gap:2em;align-items:center;padding:3em 2em;background:var(--clr-white);border-top:2px solid var(--clr-border-light)}
-.about-section img{width:300px;max-width:100%;border-radius:var(--radius-md);box-shadow:0 4px 10px var(--clr-card-shadow)}
+/* About section: full-width background image with overlay */
+.about-section{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  align-items: center;
+  padding: 3em 2em;
+
+  /* background image */
+  background: url('background.webp') center/cover no-repeat;
+  border-top: none;                 /* override previous border */
+  color: var(--clr-white);          /* make text white for contrast */
+  isolation: isolate;               /* ensures ::before sits underneath content */
+}
+.about-section img{width:300px;max-width:100%;border-radius:var(--radius-md);}
 .about-text{flex:1}
 .about-text h3{font-size:1.8rem;margin:0}
 .about-text p{font-size:1.05rem;margin:.8em 0}
