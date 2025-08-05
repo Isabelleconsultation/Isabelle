@@ -147,20 +147,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
   object-fit: contain;
 }
 
-/* If viewport height < 960px → ~50% of screen height */
-@media (max-height: 960px) {
-  #modal-img {
-    max-height: 50vh;
-    max-height: 50svh;
-  }
-}
 
-/* If viewport height < 800px → ~20% of screen height */
-@media (max-height: 800px) {
-  #modal-img {
-    max-height: 20vh;
-    max-height: 20svh;
-  }
   .modal-content { padding: 1em; } /* tighter padding on very short screens */
 }
 
