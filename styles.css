@@ -130,6 +130,40 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 .close{position:absolute;top:.8em;right:1em;font-size:1.8rem;color:#999;cursor:pointer;transition:color .2s ease}
 .close:hover{color:#333}
 
+/* Fit modal on short screens */
+.modal { padding: 1rem; } /* some breathing room on tiny screens */
+.modal-content {
+  max-height: 90vh;       /* don't exceed viewport height */
+  max-height: 90svh;      /* better on mobile with dynamic bars */
+  overflow: auto;         /* allow scroll if needed */
+}
+
+/* Modal image scales down based on screen height */
+#modal-img {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;       /* default */
+  max-height: 60svh;      /* mobile-friendly unit */
+  object-fit: contain;
+}
+
+/* If viewport height < 960px → ~50% of screen height */
+@media (max-height: 960px) {
+  #modal-img {
+    max-height: 50vh;
+    max-height: 50svh;
+  }
+}
+
+/* If viewport height < 800px → ~20% of screen height */
+@media (max-height: 800px) {
+  #modal-img {
+    max-height: 20vh;
+    max-height: 20svh;
+  }
+  .modal-content { padding: 1em; } /* tighter padding on very short screens */
+}
+
 /* ------------------------------------------------------------------
    Subpage Main Content
    ------------------------------------------------------------------*/
