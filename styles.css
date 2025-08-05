@@ -140,9 +140,38 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 .page-main p:not(.lead){font-size:1.05rem;margin-top:1.5em}
 
 /* Consultation list bullets */
-.page-main ul{list-style:none;padding-left:0;margin:1em 0}
-.page-main ul li{position:relative;padding-left:1.8em;margin-bottom:.8em;font-size:1.05rem;color:var(--clr-text)}
-.page-main ul li::before{content:"•";position:absolute;left:0;top:.1em;font-size:1.4rem;color:var(--clr-accent)}
+/* Consultation services layout */
+.service-grid{display:grid;gap:2rem}
+/* Consultation services: always stacked (mobile style on desktop too) */
+.service-grid{display:grid;gap:2rem;grid-template-columns:1fr}
+
+/* Ensure no multi-column on large screens (override any earlier rules) */
+@media(min-width:900px){
+  .service-grid{grid-template-columns:1fr}
+}
+
+
+.service-card{
+  background: var(--clr-white);
+  border-radius: var(--radius-md);
+  padding: 1.25em;
+  box-shadow: 0 4px 12px var(--clr-card-shadow);
+}
+
+.service-title{
+  margin: 0 0 .6em 0;
+  font-size: 1.3rem;
+  color: var(--clr-text);
+}
+
+.service-image{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius: var(--radius-md);
+  margin: .6em 0 1em;
+}
+
 
 /* ------------------------------------------------------------------
    Contact Form
@@ -206,3 +235,15 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
     background-size:380% auto;         /* extra zoom so no bottom gap */
   }
 }
+
+
+/* Astrology consultation page tweaks */
+.consult-hero{ text-align:center; margin-bottom:1.5em; }
+.consult-hero-image{ width:100%; max-width:680px; height:auto; border-radius:var(--radius-md); box-shadow:0 4px 12px var(--clr-card-shadow); margin:0 auto 1em; display:block; }
+.consult-divider{ border:0; border-top:2px solid var(--clr-border-light); margin:2em 0; }
+
+.consult-item{ background:var(--clr-white); border-radius:var(--radius-md); padding:1.25em; box-shadow:0 4px 12px var(--clr-card-shadow); margin-bottom:1.5em; }
+.consult-item-title{ margin:.2em 0 .6em; font-size:1.3rem; color:var(--clr-text); }
+.consult-meta{ list-style:none; padding-left:0; margin:1em 0 0; }
+.consult-meta li{ position:relative; padding-left:1.6em; margin-bottom:.5em; }
+.consult-meta li::before{ content:"•"; position:absolute; left:0; top:.05em; font-size:1.2rem; color:var(--clr-accent); }
