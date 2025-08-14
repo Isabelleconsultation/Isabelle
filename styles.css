@@ -249,13 +249,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
   color:var(--clr-white);
 }
 
-/* ---------- Mobile tweaks ---------- */
-@media(max-width:768px){
-  .astrology-page{
-    background-attachment:scroll;      /* smoother scrolling */
-    background-size:380% auto;         /* extra zoom so no bottom gap */
-  }
-}
+
 
 
 /* Astrology consultation page tweaks */
