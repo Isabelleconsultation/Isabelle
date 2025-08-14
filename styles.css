@@ -149,7 +149,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 
 
   .modal-content { padding: 1em; } /* tighter padding on very short screens */
-}
+
 
 /* ------------------------------------------------------------------
    Subpage Main Content
