@@ -181,23 +181,22 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 Morphopsychology page
 */
 
-/* Full-bleed banner */
+/* Banner same width as the text content */
 .banner-wrap{
-  width:100vw;
-  margin-left:calc(50% - 50vw);
-  margin-right:calc(50% - 50vw);
+  display:block;
+  margin:1.5em 0;   /* remove UA side margins on <figure> */
+  padding:0;
 }
 
-/* Show the whole image (no cropping) + 40% transparency */
 .banner-image{
   display:block;
-  width:100%;
-  height:auto;        /* <- allow full image, prevents top/bottom cut */
-  opacity:.6;         /* 40% transparent */
-  border-radius:0;    /* clean edge-to-edge look */
-  /* optional gentle softening to match site palette */
-  /* filter:saturate(.95) contrast(.98); */
+  width:100%;       /* fills the same width as .page-main content */
+  height:auto;
+  border-radius:var(--radius-md);
+  opacity:1;        /* adjust if you want a tint (e.g., .85) */
+  box-shadow:0 4px 12px var(--clr-card-shadow);
 }
+
 /* ------------------------------------------------------------------
    Modal
    ------------------------------------------------------------------*/
@@ -346,3 +345,38 @@ Morphopsychology page
 .consult-meta{ list-style:none; padding-left:0; margin:1em 0 0; }
 .consult-meta li{ position:relative; padding-left:1.6em; margin-bottom:.5em; }
 .consult-meta li::before{ content:"•"; position:absolute; left:0; top:.05em; font-size:1.2rem; color:var(--clr-accent); }
+
+
+/* ------------------------------------------------------------------
+   Graphology page full-viewport background (responsive, legible)
+   ------------------------------------------------------------------*/
+/* ---------------- Graphology page full-viewport background (matches astrology fix) ---------------- */
+/* ---------------- Graphology page: background + overlay baked in ---------------- */
+/* -------- Graphology page background (match Astrology approach) -------- */
+.graphology-page{
+  background: url('writing.webp') center/cover no-repeat fixed;
+  position: relative;
+  isolation: isolate;              /* enables ::before layer below content */
+}
+
+.graphology-page::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,12,32,0.5);   /* same contrast tint as Astrology */
+  z-index: -1;
+}
+
+/* Make content readable on top */
+.graphology-page .page-main,
+.graphology-page .page-main h1,
+.graphology-page .page-main h2,
+.graphology-page .page-main h3,
+.graphology-page .page-main p,
+.graphology-page .page-main li{
+  color: var(--clr-white);
+}
+
+/* Ensure the content area itself doesn't paint over the bg */
+.graphology-page .page-main{ background: transparent; }
+
