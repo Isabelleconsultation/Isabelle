@@ -78,6 +78,29 @@
   // Update footer year automatically
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Prefill message based on ?topic= query
+  (function prefillMessageFromTopic() {
+    const textarea = document.querySelector('.contact-form textarea[name="message"]');
+    if (!textarea || textarea.value.trim()) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const topic = params.get('topic');
+    if (!topic) return;
+
+    const sessionCopy = {
+      'astrology-natal': 'I would like to book a Natal Chart consultation.',
+      'astrology-relationship': 'I would like to book a Relationship Chart consultation.',
+      'astrology-annual': 'I would like to book an Annual Forecast consultation.',
+      'graphology-individual': 'I would like to book an Individual Graphology consultation.',
+      'graphology-compatibility': 'I would like to book a Compatibility Graphology consultation.',
+      'morphopsychology-portrait': 'I would like to book a Morphopsychology Portrait consultation.',
+      'morphopsychology-professional': 'I would like to book a Morphopsychology Professional consultation.'
+    };
+
+    const line = sessionCopy[topic] || 'I would like to request a consultation.';
+    textarea.value = `${line} Please let me know your next availability.`;
+  })();
+
   // contact form
   document.querySelector('.contact-form').addEventListener('submit', async e => {
     e.preventDefault();
