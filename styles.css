@@ -72,6 +72,18 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 .menu-icon span:nth-child(2){top:21px}
 .menu-icon span:nth-child(3){top:28px}
 #menu-toggle{display:none}
+
+/* Mobile menu animations */
+@keyframes slideDownOverlay{
+  from{transform:translateY(-100%);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+@keyframes bounceInLeft{
+  0%{opacity:0;transform:translateX(-30px)}
+  60%{opacity:1;transform:translateX(8px)}
+  100%{opacity:1;transform:translateX(0)}
+}
+
 @media(max-width:768px){
   .responsive-menu{
     flex-direction:row;
@@ -92,21 +104,41 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
     justify-content:flex-start;
     overflow-y:auto;
     z-index:1000;
+    opacity:1;
   }
-  .responsive-menu .menu li{width:100%;text-align:center}
+  .responsive-menu .menu li{
+    width:100%;
+    text-align:center;
+    opacity:0;
+  }
   .responsive-menu .menu a{
     display:block;
     font-size:1.2rem;
     letter-spacing:0.02em;
     padding:.4rem 0;
     color:#cde6f7;
+    transition:background .2s ease,color .2s ease;
   }
+  .responsive-menu .menu a:hover{background:rgba(205,230,247,0.12);color:#e8f3fb}
   #menu-toggle:checked + .menu-icon{transform:rotate(180deg);transition:transform .35s ease}
   #menu-toggle:checked + .menu-icon span{background:#cde6f7;} /* visible on dark overlay */
   #menu-toggle:checked + .menu-icon span:nth-child(1){top:21px;transform:rotate(45deg)}
   #menu-toggle:checked + .menu-icon span:nth-child(2){opacity:0;transform:scaleX(.4)}
   #menu-toggle:checked + .menu-icon span:nth-child(3){top:21px;transform:rotate(-45deg)}
-  #menu-toggle:checked + .menu-icon + .menu{display:flex}
+  #menu-toggle:checked + .menu-icon + .menu{
+    display:flex;
+    animation:slideDownOverlay .45s ease forwards;
+  }
+  #menu-toggle:checked + .menu-icon + .menu li{
+    animation:bounceInLeft .6s ease forwards;
+  }
+  #menu-toggle:checked + .menu-icon + .menu li:nth-child(1){animation-delay:.05s}
+  #menu-toggle:checked + .menu-icon + .menu li:nth-child(2){animation-delay:.10s}
+  #menu-toggle:checked + .menu-icon + .menu li:nth-child(3){animation-delay:.15s}
+  #menu-toggle:checked + .menu-icon + .menu li:nth-child(4){animation-delay:.20s}
+  #menu-toggle:checked + .menu-icon + .menu li:nth-child(5){animation-delay:.25s}
+  #menu-toggle:checked + .menu-icon + .menu li:nth-child(6){animation-delay:.30s}
+  #menu-toggle:checked + .menu-icon + .menu li:nth-child(7){animation-delay:.35s}
 }
 
 /* ------------------------------------------------------------------
