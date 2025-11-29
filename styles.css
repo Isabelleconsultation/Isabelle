@@ -51,12 +51,61 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 .responsive-menu .logo{font-size:1.5rem;font-weight:700}
 .responsive-menu .menu{list-style:none;display:flex;gap:1.5em;margin:0;padding:0}
 .responsive-menu a{text-decoration:none;color:var(--clr-text);font-weight:700}
-.menu-icon{display:none;font-size:1.8rem;cursor:pointer}
+.menu-icon{
+  display:none;
+  width:var(--icon-size);
+  height:var(--icon-size);
+  cursor:pointer;
+  position:relative;
+  z-index:1101; /* stays above the overlay menu */
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-icon span{
+  position:absolute;
+  left:10px; right:10px;
+  height:3px;
+  background:#2c3e50; /* visible on light header before open */
+  border-radius:2px;
+  transition:transform .35s ease, top .35s ease, opacity .35s ease;
+}
+.menu-icon span:nth-child(1){top:14px}
+.menu-icon span:nth-child(2){top:21px}
+.menu-icon span:nth-child(3){top:28px}
 #menu-toggle{display:none}
 @media(max-width:768px){
-  .responsive-menu{flex-direction:column;align-items:flex-start}
+  .responsive-menu{
+    flex-direction:row;
+    align-items:center;
+    position:relative;
+    z-index:10;
+  }
   .menu-icon{display:block;margin-left:auto}
-  .responsive-menu .menu{display:none;flex-direction:column;width:100%;margin-top:1em}
+  .responsive-menu .menu{
+    display:none;
+    flex-direction:column;
+    position:fixed;
+    inset:0;
+    background:#2c3e50;
+    padding:5rem 2rem 2.5rem;
+    gap:1.4rem;
+    align-items:center;
+    justify-content:flex-start;
+    overflow-y:auto;
+    z-index:1000;
+  }
+  .responsive-menu .menu li{width:100%;text-align:center}
+  .responsive-menu .menu a{
+    display:block;
+    font-size:1.2rem;
+    letter-spacing:0.02em;
+    padding:.4rem 0;
+    color:#cde6f7;
+  }
+  #menu-toggle:checked + .menu-icon{transform:rotate(180deg);transition:transform .35s ease}
+  #menu-toggle:checked + .menu-icon span{background:#cde6f7;} /* visible on dark overlay */
+  #menu-toggle:checked + .menu-icon span:nth-child(1){top:21px;transform:rotate(45deg)}
+  #menu-toggle:checked + .menu-icon span:nth-child(2){opacity:0;transform:scaleX(.4)}
+  #menu-toggle:checked + .menu-icon span:nth-child(3){top:21px;transform:rotate(-45deg)}
   #menu-toggle:checked + .menu-icon + .menu{display:flex}
 }
 
@@ -379,4 +428,3 @@ Morphopsychology page
 
 /* Ensure the content area itself doesn't paint over the bg */
 .graphology-page .page-main{ background: transparent; }
-
