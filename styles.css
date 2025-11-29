@@ -37,6 +37,14 @@ body {
   color:var(--clr-text);
   line-height:1.6;
 }
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  border:0;
+}
 
 /* ------------------------------------------------------------------
    Header & Navigation
@@ -44,7 +52,7 @@ body {
 header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-border)}
 .hero-header{text-align:center;padding:1.5em 0 2em}
 .hero-header h1{margin:0;font-size:2.8rem}
-.hero-header h2{margin:.5em 0 0;font-weight:400;font-size:1.4rem;color:var(--clr-muted)}
+.hero-header h2{margin:.5em 0 0;font-weight:500;font-size:1.6rem;color:var(--clr-muted)}
 
 /* Responsive nav */
 .responsive-menu{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:1em 2em;background:var(--clr-header-bg)}
