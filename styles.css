@@ -399,7 +399,7 @@ Morphopsychology page
    ------------------------------------------------------------------*/
 .astrology-page{
   /* Desktop / tablet */
-  background:url('astrobackground.png') center/cover no-repeat fixed;
+  background:url('astrobackground.webp') center/cover no-repeat fixed;
   position:relative;
   isolation:isolate;               /* enable ::before stacking */
 }
