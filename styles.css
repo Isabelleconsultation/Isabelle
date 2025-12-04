@@ -50,6 +50,11 @@ body {
   font-weight:700;
   min-height:1.2em;
 }
+.form-status{
+  margin-top:.75rem;
+  font-weight:700;
+  min-height:1.2em;
+}
 .form-status.sending{color:var(--clr-muted);}
 .form-status.success{color:#2d7a46;}
 .form-status.error{color:#b00020;}

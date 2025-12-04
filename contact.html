@@ -113,6 +113,9 @@
     statusBox.className = `form-status${variant ? ' ' + variant : ''}`;
   };
 
+  // Ensure no pop-up alerts are shown; pipe any alerts into inline status
+  window.alert = (msg) => setStatus(msg, 'error');
+
   const toggleSending = (sending) => {
     submitBtn.style.display = sending ? 'none' : 'inline-block';
   };
@@ -148,14 +151,19 @@
         setStatus('Message sent. Thank you!', 'success');
         e.target.reset();
         if (window.hcaptcha) hcaptcha.reset(); // reset the widget for the next submit
+        return; // keep button hidden after success
       } else {
         setStatus(/captcha/i.test(text) ? 'Captcha verification failed — please try again.' : 'Error — please try again.', 'error');
         if (window.hcaptcha) hcaptcha.reset(); // get a fresh token after a failed attempt
         console.error('SubmitContactForm error:', res.status, text);
+        toggleSending(false); // show button so user can retry
+        return;
       }
     } catch (err) {
       console.error(err);
       setStatus('Network error — please try again.', 'error');
+      toggleSending(false); // show button so user can retry
+      return;
     }
 
     toggleSending(false);
