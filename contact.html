@@ -44,6 +44,7 @@
       <div class="h-captcha" data-sitekey="820a1996-48a4-475a-8a3c-7b58fcb44c7e"></div>
 
       <button type="submit">Send Message</button>
+      <div class="form-status" aria-live="polite"></div>
     </form>
   </main>
 </body>
@@ -103,13 +104,30 @@
   })();
 
   // contact form
-  document.querySelector('.contact-form').addEventListener('submit', async e => {
+  const form = document.querySelector('.contact-form');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const statusBox = form.querySelector('.form-status');
+
+  const setStatus = (text, variant = '') => {
+    statusBox.textContent = text;
+    statusBox.className = `form-status${variant ? ' ' + variant : ''}`;
+  };
+
+  const toggleSending = (sending) => {
+    submitBtn.style.display = sending ? 'none' : 'inline-block';
+  };
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+
+    toggleSending(true);
+    setStatus('Sending, please wait ...', 'sending');
 
     // ① Get the hCaptcha token and require it
     const token = (window.hcaptcha && hcaptcha.getResponse()) || '';
     if (!token) {
-      alert('Please complete the captcha first.');
+      setStatus('Please complete the captcha first.', 'error');
+      toggleSending(false);
       return;
     }
 
@@ -126,21 +144,21 @@
 
       const text = await res.text().catch(() => '');
 
-      alert(res.ok ? 'Thanks – message sent!' :
-        (/captcha/i.test(text) ? 'Captcha verification failed — please try again.' : 'Error — please try again.')
-      );
-
       if (res.ok) {
+        setStatus('Message sent. Thank you!', 'success');
         e.target.reset();
         if (window.hcaptcha) hcaptcha.reset(); // reset the widget for the next submit
       } else {
+        setStatus(/captcha/i.test(text) ? 'Captcha verification failed — please try again.' : 'Error — please try again.', 'error');
         if (window.hcaptcha) hcaptcha.reset(); // get a fresh token after a failed attempt
         console.error('SubmitContactForm error:', res.status, text);
       }
     } catch (err) {
       console.error(err);
-      alert('Network error — please try again.');
+      setStatus('Network error — please try again.', 'error');
     }
+
+    toggleSending(false);
   });
 </script>
 </html>
