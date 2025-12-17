@@ -8,7 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="home-page">
+  <div class="loading-sequence" id="loading-sequence" aria-hidden="true">
+    <img id="loading-image" src="astrology.webp" alt="">
+    <div class="loading-title" id="loading-title" aria-hidden="true"></div>
+  </div>
   <header>
     <nav class="responsive-menu">
       <div class="logo"><a href="index.html">ISABELLE FERREIRA</a></div>
@@ -194,6 +198,59 @@ In a world constantly searching for meaning, holistic astrology invites us to tu
     // footer year
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
+  })();
+
+  (function () {
+    const overlay = document.getElementById('loading-sequence');
+    const img = document.getElementById('loading-image');
+    if (!overlay || !img) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      overlay.classList.add('is-hidden');
+      overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+      return;
+    }
+
+    const sequence = [
+      { src: 'astrology.webp', label: 'Astrology' },
+      { src: 'graphologyV.webp', label: 'Graphology' },
+      { src: 'morphopsychology.webp', label: 'Morphopsychology' }
+    ];
+    function finish() {
+      overlay.classList.add('is-hidden');
+      overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+    }
+
+    const titleEl = document.getElementById('loading-title');
+    let index = 0;
+
+    function playNext() {
+      if (index >= sequence.length) {
+        finish();
+        return;
+      }
+
+      const item = sequence[index++];
+      const src = item.src;
+      img.classList.remove('is-zooming');
+      void img.offsetHeight;
+      img.onload = () => {
+        if (titleEl) titleEl.textContent = item.label;
+        img.classList.add('is-zooming');
+      };
+      img.onerror = () => {
+        img.classList.remove('is-zooming');
+        setTimeout(playNext, 50);
+      };
+      img.src = src;
+      if (img.complete) {
+        img.onload();
+      }
+    }
+
+    img.addEventListener('animationend', playNext);
+    playNext();
   })();
 </script>
 </html>
