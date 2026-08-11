@@ -66,7 +66,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 .home-page header{
   min-height:clamp(340px,36vw,540px);
   background-color:var(--clr-header-bg);
-  background-image:linear-gradient(rgba(227,244,253,.62),rgba(227,244,253,.62)),url('BrightonPier.jpeg');
+  background-image:linear-gradient(rgba(227,244,253,.75),rgba(227,244,253,.75)),url('BrightonPier.jpeg');
   background-position:center 60%;
   background-size:120% auto;
   background-repeat:no-repeat;
@@ -122,7 +122,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
   }
 }
 
-@media(max-width:540px){
+@media(max-width:550px){
   .home-page header{
     background-position:center 35%;
     background-size:auto 155%;
