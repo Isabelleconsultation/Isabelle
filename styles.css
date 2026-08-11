@@ -63,13 +63,24 @@ body {
    Header & Navigation
    ------------------------------------------------------------------*/
 header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-border)}
+.home-page header{
+  min-height:clamp(340px,36vw,540px);
+  background-color:var(--clr-header-bg);
+  background-image:linear-gradient(rgba(227,244,253,.62),rgba(227,244,253,.62)),url('BrightonPier.jpeg');
+  background-position:center 60%;
+  background-size:120% auto;
+  background-repeat:no-repeat;
+}
 .hero-header{text-align:center;padding:1.5em 0 2em}
+.home-page .hero-header{padding:clamp(5rem,9vw,7rem) 1rem 2.5rem}
 .hero-header h1{margin:0;font-size:2.8rem}
 .hero-header h2{margin:.5em 0 0;font-weight:500;font-size:1.6rem;color:var(--clr-muted)}
 
 /* Responsive nav */
 .responsive-menu{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:1em 2em;background:var(--clr-header-bg)}
+.home-page .responsive-menu{background:transparent}
 .responsive-menu .logo{font-size:1.5rem;font-weight:700}
+.logo-name-mobile{display:none}
 .responsive-menu .menu{list-style:none;display:flex;gap:1.5em;margin:0;padding:0}
 .responsive-menu a{text-decoration:none;color:var(--clr-text);font-weight:700}
 .menu-icon{
@@ -105,7 +116,16 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
   100%{opacity:1;transform:translateX(0)}
 }
 
+@media(max-width:540px){
+  .home-page header{
+    background-position:center 35%;
+    background-size:auto 155%;
+  }
+}
+
 @media(max-width:768px){
+  .logo-name-desktop{display:none}
+  .logo-name-mobile{display:inline}
   .responsive-menu{
     flex-direction:row;
     align-items:center;
