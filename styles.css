@@ -239,7 +239,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
   width: 100%;
   max-width: 320px;
   height: auto;
-  margin: 0 auto; /* This centers the element */
+  margin: 0 auto 2.5em; /* This centers the element; extra room below before the text */
   border-radius: var(--radius-md);
   box-sizing: border-box;
 }
