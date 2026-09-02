@@ -124,6 +124,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 
 @media(max-width:550px){
   .home-page header{
+    min-height:640px; /* extra room so the longer title + subtitle always fits */
     background-position:center 35%;
     background-size:auto 155%;
   }
@@ -135,7 +136,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 
 @media(max-width:315px){
   .home-page header{
-    min-height:560px;
+    min-height:700px;
   }
 }
 
