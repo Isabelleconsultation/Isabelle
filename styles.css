@@ -105,6 +105,11 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 .menu-icon span:nth-child(3){top:28px}
 #menu-toggle{display:none}
 
+/* Hide the Home item on desktop — the logo is the home link. (Shown in the mobile menu.) */
+@media(min-width:769px){
+  .responsive-menu .menu li.menu-home{display:none}
+}
+
 /* Mobile menu animations */
 @keyframes slideDownOverlay{
   from{transform:translateY(-100%);opacity:0}
