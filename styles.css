@@ -148,6 +148,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 @media(max-width:768px){
   .logo-name-desktop{display:none}
   .logo-name-mobile{display:inline}
+  .responsive-menu .logo{font-size:1rem;white-space:nowrap} /* full name on one line on phones */
   .responsive-menu{
     flex-direction:row;
     align-items:center;
@@ -202,6 +203,10 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
   #menu-toggle:checked + .menu-icon + .menu li:nth-child(5){animation-delay:.25s}
   #menu-toggle:checked + .menu-icon + .menu li:nth-child(6){animation-delay:.30s}
   #menu-toggle:checked + .menu-icon + .menu li:nth-child(7){animation-delay:.35s}
+}
+
+@media(max-width:340px){
+  .responsive-menu .logo{font-size:0.85rem} /* tiny phones: shrink a bit more to keep one line */
 }
 
 /* ------------------------------------------------------------------
