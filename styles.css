@@ -75,6 +75,7 @@ header{background:var(--clr-header-bg);border-bottom:2px solid var(--clr-header-
 .home-page .hero-header{padding:clamp(5rem,9vw,7rem) 1rem 2.5rem}
 .hero-header h1{margin:0;font-size:2.8rem}
 .hero-header h2{margin:.5em 0 0;font-weight:500;font-size:1.6rem;color:var(--clr-muted)}
+.hero-header h3{margin:.6em 0 0;font-weight:400;font-size:1.2rem;color:var(--clr-muted)}
 
 /* Responsive nav */
 .responsive-menu{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:1em 2em;background:var(--clr-header-bg)}
